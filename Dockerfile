@@ -1,14 +1,9 @@
-FROM dockerfile/ruby
+FROM jekyll/jekyll
 
-RUN gem install s3_website
-
-RUN apt-get update
-RUN apt-get install -y openjdk-7-jre-headless
-
-VOLUME ["/website", "/config"]
-
-WORKDIR /website
-
-ENTRYPOINT ["s3_website"]
-
-CMD ["--help"]
+# From https://github.com/anigeo/docker-awscli/blob/master/Dockerfile
+RUN \
+	mkdir -p /aws && \
+	apk -Uuv add groff less python py-yaml py-pip && \
+	pip install awscli && \
+	apk --purge -v del py-pip && \
+	rm /var/cache/apk/*
