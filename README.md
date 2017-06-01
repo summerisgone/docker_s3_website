@@ -20,7 +20,7 @@ Here ``pwd`` is important because jekyll/jekyll image sets its own WORKDIR.
 
 Run Jekyll in live update mode
 
-    docker run -v `pwd`:/srv/jekyll -p 4000:4000 summerisgone/jekyll_s3_website jekyll build && open http://localhost:4000
+    docker run -v `pwd`:/srv/jekyll -p 4000:4000 summerisgone/jekyll_s3_website jekyll serve && open http://localhost:4000
 
 
 Generate website
